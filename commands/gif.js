@@ -1,4 +1,3 @@
-const config = require("../config.json");
 const discord = require("discord.js");
 const axios = require("axios");
 
@@ -20,7 +19,7 @@ module.exports = {
     let searchQuery = interaction.options.getString("search_query");
     const url = `https://tenor.googleapis.com/v2/search?q=${encodeURIComponent(
       searchQuery
-    )}&key=${config.tenor_api_key}&limit=8`;
+    )}&key=${process.env.tenor_api_key}&limit=8`;
 
     axios.default.get(url).then(async (res) => {
       await interaction.reply({
